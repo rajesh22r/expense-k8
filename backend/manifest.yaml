@@ -40,7 +40,7 @@ spec:
         image: rajesh2219/backend:v1
         envFrom:
         - configMapRef:
-        name: backend
+           name: backend
 ---
 kind: Service
 apiVersion: v1
