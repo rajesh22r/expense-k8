@@ -89,7 +89,7 @@ data:
         location /api/ { 
             proxy_pass http://backend:8080/;
         }
-
+            #this as part of nginx configmap
         }
 
     }
