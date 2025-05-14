@@ -164,7 +164,7 @@ metadata:
   name: frontend
   namespace: expense
 spec:
-  type: LoadBalancer
+  #type: LoadBalancer
   selector:
     app: frontend
     tier: web
@@ -189,6 +189,19 @@ spec:
  minReplicas: 1
  maxReplicas: 10
  targetCPUUtilizationPercentage: 15
+
+---
+apiVersion: elbv2.k8s.aws/v1beta1
+kind: TargetGroupBinding
+metadata:
+  name: frontend
+  namespace: expense
+spec:
+  serviceRef:
+    name: frontend # route traffic to the awesome-service
+    port: 80
+  targetGroupARN: arn:aws:elasticloadbalancing:us-east-1:253490795749:targetgroup/expense-dev/de4d8a06bd3557d0
+  target_type: ip
 
 
 
